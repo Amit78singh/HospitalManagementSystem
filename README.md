@@ -58,26 +58,24 @@ A full-stack **Hospital Management System** built with:
 ## 📸 Dashboard Preview
 
 ### 💻 Admin Dashboard (Analytics Overview)
-![Admin Dashboard - Charts](Charts.png)
+![Admin Dashboard - Charts](https://github.com/user-attachments/assets/6f068bac-3783-4276-819c-be8bc4f5e32a)
 
 ### 📈 Patients Dashboard
-![Patients Dashboard](<img width="1920" height="1080" alt="Patients DashBoard" src="https://github.com/user-attachments/assets/c80cad16-fc08-4b62-a3f0-80266ba40665" />)
-
+![Patients Dashboard](https://github.com/user-attachments/assets/c80cad16-fc08-4b62-a3f0-80266ba40665)
 
 ### 👨‍⚕️ Doctors Dashboard
-![Doctors Dashboard](<img width="1920" height="1080" alt="API2" src="https://github.com/user-attachments/assets/abd0ec1a-2a5f-416b-bac0-7d269bfac874" />)
+![Doctors Dashboard](https://github.com/user-attachments/assets/abd0ec1a-2a5f-416b-bac0-7d269bfac874)
 
 ### 🔑 Authentication Screens
 #### Login
-![Login Page](<img width="1920" height="1080" alt="Login" src="https://github.com/user-attachments/assets/24cf2fe8-564d-43f3-85a7-081ca1a79fee" />)
+![Login Page](https://github.com/user-attachments/assets/24cf2fe8-564d-43f3-85a7-081ca1a79fee)
 
 #### Register
-![Register Page](Register.png)
-<img width="1920" height="1080" alt="Register" src="https://github.com/user-attachments/assets/bb123ccb-e09e-411f-9350-8cdb1664f46b" />
+![Register Page](https://github.com/user-attachments/assets/bb123ccb-e09e-411f-9350-8cdb1664f46b)
 
 ### ⚙️ API Documentation (Swagger UI)
-![API Documentation 1](API.png)
-![API Documentation 2](API2.png)
+![API Documentation 1](https://github.com/user-attachments/assets/c2c7cd5c-f9b5-44bd-8684-2f1db362affd)
+![API Documentation 2](https://github.com/user-attachments/assets/abd0ec1a-2a5f-416b-bac0-7d269bfac874)
 
 
   🙋‍♂️ Author
@@ -97,9 +95,3 @@ cd HospitalManagementAPI
 dotnet restore
 dotnet ef database update
 dotnet run
-
-
-
-<img width="1920" height="1080" alt="Charts" src="https://github.com/user-attachments/assets/6f068bac-3783-4276-819c-be8bc4f5e32a" />
-<img width="1920" height="1080" alt="API2" src="https://github.com/user-attachments/assets/abd0ec1a-2a5f-416b-bac0-7d269bfac874" />
-<img width="1920" height="1080" alt="API" src="https://github.com/user-attachments/assets/c2c7cd5c-f9b5-44bd-8684-2f1db362affd" />
