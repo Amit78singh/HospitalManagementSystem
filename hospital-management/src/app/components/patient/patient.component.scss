@@ -1,82 +1,330 @@
 .container {
- max-width: 1100px;
-  margin: 3px auto;
-  h2 {
-    
-     text-align: center;
-    font-size: 22px;
-    margin-bottom: 30px auto;
-  }
-
-h2 {
-  text-align: center;
-  margin-bottom: 10px auto;
+  max-width: 1200px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
-.form {
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.my-horizontal-line {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 2rem 0;
+}
+
+.export-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 20px;
-
-  input {
-    flex: 1 1 20%;
-    padding: 10px;
-    font-size: 14px;
-  }
-
-  button {
-    padding: 10px 15px;
-    font-weight: bold;
-    cursor: pointer;
-    
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      
-  }
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-
-  th, td {
-    border: 1px solid #ca0606;
-    padding: 8px 12px;
-    text-align: left;
-  }
-
-  th {
-    background-color: #af7a7a;
-  }
-
-  button {
-    margin-right: 5px;
-    
-    cursor: pointer;
-  }
-}
-
-.error {
-  color: red;
-  font-size: 0.85rem;
-  margin-bottom: 8px;
-}
-.pagination-controls {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
   justify-content: center;
 
-  button {
-    padding: 4px 10px;
+  .export-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
-  }
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 
-  span {
-    font-weight: bold;
+    .icon {
+      font-size: 1.2rem;
+    }
+
+    &.csv-button {
+      background-color: #28a745; // Green
+      color: white;
+      &:hover {
+        background-color: #218838;
+        transform: translateY(-2px);
+      }
+    }
+
+    &.excel-button {
+      background-color: #007bff; // Blue
+      color: white;
+      &:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+      }
+    }
   }
 }
+
+.filters-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  justify-content: center;
+
+  .filter-input {
+    flex: 1 1 250px; // Allows inputs to grow but maintain minimum width
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+}
+
+.patient-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Responsive grid
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background-color: #f9fbfd;
+
+  .form-title {
+    grid-column: 1 / -1; // Span across all columns
+    text-align: center;
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: #495057;
+    }
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    }
+  }
+
+  .form-actions {
+    grid-column: 1 / -1; // Span across all columns
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    .submit-button, .cancel-button {
+      padding: 0.8rem 1.8rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    .submit-button {
+      background-color: #007bff;
+      color: white;
+      &:hover {
+        background-color: #0056b3;
+        transform: translateY(-2px);
+      }
+    }
+
+    .cancel-button {
+      background-color: #6c757d; // Gray
+      color: white;
+      &:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+      }
+    }
+  }
+}
+
+.table-responsive {
+  overflow-x: auto; // Enables horizontal scrolling on small screens
+  margin-bottom: 2rem;
+}
+
+.patient-table {
+  width: 100%;
+  border-collapse: separate; // Use separate for rounded corners on cells
+  border-spacing: 0;
+  min-width: 700px; // Minimum width to prevent squishing on small screens
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden; // Ensures rounded corners apply to content
+
+  th, td {
+    padding: 1rem 1.2rem;
+    text-align: left;
+    border-bottom: 1px solid #e9ecef; // Light border for rows
+  }
+
+  thead {
+    background-color: #f8f9fa; // Light header background
+    th {
+      color: #495057;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      cursor: pointer;
+      &:hover {
+        background-color: #e2e6ea;
+      }
+    }
+  }
+
+  tbody {
+    tr {
+      transition: background-color 0.2s ease;
+      &:hover {
+        background-color: #f0f8ff; // Light blue on hover
+      }
+      &:last-child td {
+        border-bottom: none; // No border for the last row
+      }
+    }
+    td {
+      color: #343a40;
+    }
+  }
+
+  .sortable {
+    position: relative;
+    padding-right: 2rem; // Space for sort icon
+
+    .sort-icon {
+      position: absolute;
+      right: 1rem;
+      color: #adb5bd; // Gray icon
+      font-size: 0.8rem;
+    }
+  }
+
+  .action-buttons {
+    white-space: nowrap; // Prevent buttons from wrapping
+    .action-button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      margin-right: 0.5rem; // Space between buttons
+
+      &.edit-button {
+        background-color: #ffc107; // Yellow for edit
+        color: #343a40;
+        &:hover {
+          background-color: #e0a800;
+          transform: translateY(-1px);
+        }
+      }
+
+      &.delete-button {
+        background-color: #dc3545; // Red for delete
+        color: white;
+        &:hover {
+          background-color: #c82333;
+          transform: translateY(-1px);
+        }
+      }
+    }
+  }
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+
+  .pagination-button {
+    padding: 0.7rem 1.2rem;
+    border: 1px solid #007bff;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background-color: #0056b3;
+      border-color: #004085;
+      transform: translateY(-2px);
+    }
+
+    &:disabled {
+      background-color: #e9ecef;
+      border-color: #ced4da;
+      color: #6c757d;
+      cursor: not-allowed;
+      opacity: 0.7;
+    }
+  }
+
+  .page-info {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #343a40;
+  }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .export-buttons, .filters-section, .patient-form .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .export-button, .filter-input, .patient-form .submit-button, .patient-form .cancel-button {
+    width: 100%;
+  }
+
+  .patient-form {
+    grid-template-columns: 1fr; // Single column layout
+  }
+
+  .patient-table {
+    min-width: unset; // Allow table to shrink on small screens
+  }
 }

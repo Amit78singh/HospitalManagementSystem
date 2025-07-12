@@ -1,63 +1,143 @@
 <div class="container">
-  <h2>Patient Management</h2>
-   <hr class="my-horizontal-line">
-    <!-- ⬇️ CSV Export Button -->
-<button (click)="downloadCsv()">📄 Export to CSV</button>
+  <h2 class="section-title">Patient Management</h2>
+  <hr class="my-horizontal-line" />
 
-<button (click)="downloadExcel()">📊 Export to Excel</button>
-
-  <!-- 🔍 Search, Filter, and Sort Controls -->
-  <div class="filters">
-    <input type="text" placeholder="Search by name..." [(ngModel)]="searchTerm" (input)="onFilterChange()" />
-    <input type="text" placeholder="Filter by disease..." [(ngModel)]="selectedDisease" (input)="onFilterChange()" />
-    <input type="number" placeholder="Filter by Doctor ID..." [(ngModel)]="selectedDoctorId" (input)="onFilterChange()" />
+  <!-- ⬇️ CSV Export Buttons -->
+  <div class="export-buttons">
+    <button (click)="downloadCsv()" class="export-button csv-button">
+      <span class="icon">📄</span> Export to CSV
+    </button>
+    <button (click)="downloadExcel()" class="export-button excel-button">
+      <span class="icon">📊</span> Export to Excel
+    </button>
   </div>
 
+  <!-- 🔍 Search, Filter Controls -->
+  <div class="filters-section">
+    <input
+      type="text"
+      placeholder="Search by name..."
+      [(ngModel)]="searchTerm"
+      (input)="onFilterChange()"
+      class="filter-input"
+    />
+    <input
+      type="text"
+      placeholder="Filter by disease..."
+      [(ngModel)]="selectedDisease"
+      (input)="onFilterChange()"
+      class="filter-input"
+    />
+    <input
+      type="number"
+      placeholder="Filter by Doctor ID..."
+      [(ngModel)]="selectedDoctorId"
+      (input)="onFilterChange()"
+      class="filter-input"
+    />
+  </div>
+
+  <hr class="my-horizontal-line" />
+
   <!-- 📝 Add/Edit Patient Form -->
-  <form (ngSubmit)="isEditing ? updatePatient() : addPatient()" class="form">
-    <input type="text" placeholder="Name" [(ngModel)]="newPatient.Name" name="name" required />
-    <input type="number" placeholder="Age" [(ngModel)]="newPatient.Age" name="age" required />
-    <input type="text" placeholder="Disease" [(ngModel)]="newPatient.Disease" name="disease" required />
-    <input type="number" placeholder="Doctor ID" [(ngModel)]="newPatient.DoctorId" name="doctorId" required />
+  <form (ngSubmit)="isEditing ? updatePatient() : addPatient()" class="patient-form">
+    <h3 class="form-title">{{ isEditing ? 'Edit Patient' : 'Add New Patient' }}</h3>
+    <div class="form-group">
+      <label for="patientName">Name</label>
+      <input
+        type="text"
+        id="patientName"
+        placeholder="Patient Name"
+        [(ngModel)]="newPatient.Name"
+        name="name"
+        required
+        class="form-input"
+      />
+    </div>
+    <div class="form-group">
+      <label for="patientAge">Age</label>
+      <input
+        type="number"
+        id="patientAge"
+        placeholder="Age"
+        [(ngModel)]="newPatient.Age"
+        name="age"
+        required
+        class="form-input"
+      />
+    </div>
+    <div class="form-group">
+      <label for="patientDisease">Disease</label>
+      <input
+        type="text"
+        id="patientDisease"
+        placeholder="Disease"
+        [(ngModel)]="newPatient.Disease"
+        name="disease"
+        required
+        class="form-input"
+      />
+    </div>
+    <div class="form-group">
+      <label for="patientDoctorId">Doctor ID</label>
+      <input
+        type="number"
+        id="patientDoctorId"
+        placeholder="Doctor ID"
+        [(ngModel)]="newPatient.DoctorId"
+        name="doctorId"
+        required
+        class="form-input"
+      />
+    </div>
 
-    <button type="submit">{{ isEditing ? 'Update' : 'Add' }} Patient</button>
-    <button type="button" *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
+    <div class="form-actions">
+      <button type="submit" class="submit-button">
+        {{ isEditing ? 'Update Patient' : 'Add Patient' }}
+      </button>
+      <button type="button" *ngIf="isEditing" (click)="cancelEdit()" class="cancel-button">
+        Cancel
+      </button>
+    </div>
   </form>
- <hr class="my-horizontal-line">
+
+  <hr class="my-horizontal-line" />
+
   <!-- 📋 Patient Table with Sorting -->
-  <table>
-    
-    <thead>
-      <tr>
-        <th (click)="toggleSort('name')">Name ▲▼</th>
-        <th (click)="toggleSort('age')">Age ▲▼</th>
-        <th (click)="toggleSort('disease')">Disease ▲▼</th>
-        <th>Doctor ID</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let p of patients">
-        <td>{{ p.Name }}</td>
-        <td>{{ p.Age }}</td>
-        <td>{{ p.Disease }}</td>
-        <td>{{ p.DoctorId }}</td>
-        <td>
-          <button (click)="editPatient(p)">Edit</button>
-          <button (click)="deletePatient(p.Id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-
-
+  <div class="table-responsive">
+    <table class="patient-table">
+      <thead>
+        <tr>
+          <th (click)="toggleSort('name')" class="sortable">Name <span class="sort-icon">▲▼</span></th>
+          <th (click)="toggleSort('age')" class="sortable">Age <span class="sort-icon">▲▼</span></th>
+          <th (click)="toggleSort('disease')" class="sortable">Disease <span class="sort-icon">▲▼</span></th>
+          <th>Doctor ID</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let p of patients">
+          <td>{{ p.Name }}</td>
+          <td>{{ p.Age }}</td>
+          <td>{{ p.Disease }}</td>
+          <td>{{ p.DoctorId }}</td>
+          <td class="action-buttons">
+            <button (click)="editPatient(p)" class="action-button edit-button">Edit</button>
+            <button (click)="deletePatient(p.Id)" class="action-button delete-button">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <!-- ✅ Pagination Controls -->
- <div class="pagination-controls">
-  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{ currentPage }} of {{ totalPage }}</span>
-  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPage">Next</button>
-</div>
-
+  <div class="pagination-controls">
+    <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1" class="pagination-button">
+      Previous
+    </button>
+    <span class="page-info">Page {{ currentPage }} of {{ totalPage }}</span>
+    <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPage" class="pagination-button">
+      Next
+    </button>
+  </div>
 </div>

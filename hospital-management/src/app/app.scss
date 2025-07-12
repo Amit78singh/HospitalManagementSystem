@@ -1,47 +1,153 @@
-h1 {
-  text-align: center;
-  margin-bottom: 50px;
+/* Base styles for the entire app */
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  background-color: #f0f2f5; // Light gray background
+  color: #333;
 }
-nav {
-  text-align: center;
-  margin-bottom: 20px;
 
-  a {
-    text-decoration: none;
-    margin-right: 10px;
-    color: #007bff;
+/* Header/Navbar Styles */
+.app-header {
+  position: sticky; // Makes the header sticky
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1000; // Ensures header stays on top
+  padding: 1rem 0;
+  display: flex;
+  justify-content: center; // Center the content
+  align-items: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1200px; // Max width for content
+  display: flex;
+  flex-wrap: wrap; // Allow wrapping on smaller screens
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem; // Horizontal padding
+}
+
+.app-title {
+  font-size: 1.8rem;
+  color: #2c3e50; // Dark blue-gray
+  margin: 0;
+  flex-shrink: 0; // Prevent shrinking
+  text-align: center;
+  width: 100%; // Full width on mobile
+  margin-bottom: 0.5rem; // Space below title on mobile
+
+  @media (min-width: 768px) {
+    font-size: 2.2rem;
+    width: auto; // Auto width on desktop
+    margin-bottom: 0;
   }
 }
-a.active {
-  font-weight: bold;
-  text-decoration: underline;
+
+.main-nav, .auth-nav {
+  flex-grow: 1; // Allow nav to take available space
+  text-align: center; // Center nav items on mobile
+  width: 100%; // Full width on mobile
+
+  @media (min-width: 768px) {
+    width: auto; // Auto width on desktop
+    text-align: right; // Align right on desktop
+  }
 }
+
+.nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; // Stack vertically on mobile
+  align-items: center; // Center items
+  gap: 0.75rem; // Space between items
+
+  @media (min-width: 768px) {
+    flex-direction: row; // Row horizontally on desktop
+    justify-content: flex-end; // Align items to the right
+    gap: 1.5rem;
+  }
+}
+
+.nav-item {
+  a {
+    text-decoration: none;
+    color: #007bff; // Primary blue
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+    &:hover {
+      background-color: #e0f2ff; // Light blue hover
+      color: #0056b3;
+    }
+
+    &.active {
+      background-color: #007bff;
+      color: white;
+      box-shadow: 0 2px 8px rgba(0, 123, 255, 0.3);
+    }
+  }
+}
+
 .logout-button {
- 
-  background-color: #e74c3c;
+  background-color: #e74c3c; // Red for logout
   color: white;
   border: none;
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 
   &:hover {
     background-color: #c0392b;
+    transform: translateY(-2px);
   }
 }
 
+/* Toast Message Styles */
 .toast {
-  background-color: #4caf50; // Green success
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745; // Green success
   color: white;
-  padding: 10px;
-  border-radius: 6px;
-  margin: 10px 0;
-  animation: fadeout 3s ease-out forwards;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  animation: fadeOutToast 5s ease-out forwards;
+  font-size: 0.95rem;
+  text-align: center;
+  max-width: 90%; // Responsive width
 }
 
-@keyframes fadeout {
-  0% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
+@keyframes fadeOutToast {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  80% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(20px); }
+}
+
+/* Global padding for router-outlet content to avoid being hidden by sticky header */
+router-outlet + * {
+  padding-top: 100px; // Adjust based on header height
+  @media (max-width: 767px) {
+    padding-top: 160px; // More space for stacked header on mobile
+  }
+}
+
+/* General utility styles */
+.my-horizontal-line {
+  border: none;
+  height: 1px;
+  background-color: #e0e0e0;
+  margin: 2rem 0;
 }

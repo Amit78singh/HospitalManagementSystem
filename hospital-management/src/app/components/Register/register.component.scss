@@ -1,65 +1,140 @@
-form {
-  max-width: 400px;
-  margin: 50px auto;
-  padding: 2rem;
-  border: 1px solid #ddd;
-  border-radius: 12px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+.register-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 100px); // Adjust for header height
+  padding: 1.5rem;
+  background-color: #e9ecef; // Light background for the page
+}
 
+.register-container {
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.register-title {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+}
+
+.register-form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.2rem;
+}
 
-   h2 {
-    text-align: center;
-    margin-bottom: 24px;
-    color: #2c3e50;
-  }
-
+.form-group {
+  text-align: left;
   label {
-    font-weight: bold;
-    margin-bottom: 0.25rem;
-    color: #444;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: #495057;
+  }
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  -webkit-appearance: none; // Remove default select styling
+  -moz-appearance: none;
+  appearance: none;
+  background-color: #fff; // Ensure consistent background for select
+
+  &:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+}
+
+.form-select {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23007bff%22%20d%3D%22M287%2C197.3L159.2%2C69.5c-3.6-3.6-9.4-3.6-13.1%2C0L5.4%2C197.3c-3.6%2C3.6-3.6%2C9.4%2C0%2C13.1c3.6%2C3.6%2C9.4%2C3.6%2C13.1%2C0l135-135l135%2C135c3.7%2C3.6%2C9.5%2C3.6%2C13.1%2C0C290.7%2C206.7%2C290.7%2C200.9%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  background-size: 0.65em auto;
+  padding-right: 2.5em; /* Space for the arrow */
+}
+
+
+.validation-error {
+  color: #dc3545; // Bootstrap red for errors
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  text-align: left;
+  font-weight: 500;
+}
+
+.register-button {
+  background-color: #28a745; // Green for register
+  color: white;
+  padding: 0.9rem 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  font-weight: 600;
+  margin-top: 1rem;
+
+  &:hover:not(:disabled) {
+    background-color: #218838;
+    transform: translateY(-2px);
   }
 
-  input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+  &:disabled {
+    background-color: #98d3a7;
+    cursor: not-allowed;
+    opacity: 0.7;
+  }
+}
+
+.login-link-text {
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
+  color: #6c757d;
+
+  .login-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .register-container {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+
+  .register-title {
+    font-size: 1.7rem;
+  }
+
+  .register-button {
+    padding: 0.8rem 1.2rem;
     font-size: 1rem;
-    transition: border-color 0.3s;
-
-    &:focus {
-      border-color: #007bff;
-      outline: none;
-    }
-  }
-
-  button {
-    padding: 0.75rem;
-    font-size: 1rem;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-
-    &:disabled {
-      background-color: #a3c3f0;
-      cursor: not-allowed;
-    }
-
-    &:hover:not(:disabled) {
-      background-color: #0056b3;
-    }
-  }
-
-  div {
-    color: #d9534f;
-    font-size: 0.85rem;
-    margin-top: -0.5rem;
-    margin-bottom: 0.25rem;
   }
 }

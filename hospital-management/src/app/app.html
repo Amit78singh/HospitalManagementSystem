@@ -1,21 +1,37 @@
-<header>
-  <h1>Hospital Management System</h1>
-  <nav *ngIf="auth.isLoggedIn(); else loginNav">
-    <a [routerLink]="['/patients']" routerLinkActive="active">Patients</a> |
-    <a *ngIf="auth.isAdmin()" [routerLink]="['/doctors']" routerLinkActive="active">Doctors</a> |
-    <a *ngIf="auth.isAdmin()" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a> |
-    <button class="logout-button" (click)="auth.logout()">Logout</button>
-  </nav>
+<header class="app-header">
+  <div class="header-content">
+    <h1 class="app-title">Hospital Management System</h1>
+    <nav class="main-nav" *ngIf="auth.isLoggedIn(); else loginNav">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a [routerLink]="['/patients']" routerLinkActive="active">Patients</a>
+        </li>
+        <li class="nav-item" *ngIf="auth.isAdmin()">
+          <a [routerLink]="['/doctors']" routerLinkActive="active">Doctors</a>
+        </li>
+        <li class="nav-item" *ngIf="auth.isAdmin()">
+          <a [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <button class="logout-button" (click)="auth.logout()">Logout</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
 
 <ng-template #loginNav>
-  <nav>
-    <a [routerLink]="['/register']" routerLinkActive="active">Register</a> |
-    <a [routerLink]="['/login']" routerLinkActive="active">Login</a>
+  <nav class="auth-nav">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a [routerLink]="['/register']" routerLinkActive="active">Register</a>
+      </li>
+      <li class="nav-item">
+        <a [routerLink]="['/login']" routerLinkActive="active">Login</a>
+      </li>
+    </ul>
   </nav>
 </ng-template>
-
-<hr />
 
 <div *ngIf="auth.message" class="toast bottom-toast">
   {{ auth.message }}

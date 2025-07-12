@@ -1,20 +1,47 @@
+<div class="register-wrapper">
+  <div class="register-container">
+    <h2 class="register-title">Create Account</h2>
+    <form [formGroup]="form" (ngSubmit)="register()" class="register-form">
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="your.email@example.com"
+          formControlName="email"
+          class="form-input"
+        />
+        <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched" class="validation-error">
+          Valid email required
+        </div>
+      </div>
 
-<form [formGroup]="form" (ngSubmit)="register()">
-  <h2>Register</h2>
-  <label>Email:</label>
-  <input type="email" placeholder="Enter Your Email to Register" formControlName="email" />
-  <div *ngIf="form.get('email')?.invalid && form.get('email')?.touched">Valid email required</div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter a strong password"
+          formControlName="password"
+          class="form-input"
+        />
+        <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched" class="validation-error">
+          Min 6 characters required
+        </div>
+      </div>
 
-  <label>Password:</label>
-  <input type="password" placeholder="Enter a Strong Password"  formControlName="password" />
-  <div *ngIf="form.get('password')?.invalid && form.get('password')?.touched">Min 6 characters required</div>
-<label>Role:</label>
-<select formControlName="role">
-   
-   <option value="User">User</option>
+      <div class="form-group">
+        <label for="role">Role</label>
+        <select id="role" formControlName="role" class="form-select">
+          <option value="User">User</option>
+          <option value="Admin">Admin</option>
+        </select>
+      </div>
+
+      <button type="submit" [disabled]="form.invalid" class="register-button">
+        Register
+      </button>
+    </form>
   
-  <option value="Admin">Admin</option>
-</select>
-
-  <button type="submit" [disabled]="form.invalid">Register</button>
-</form>
+  </div>
+</div>

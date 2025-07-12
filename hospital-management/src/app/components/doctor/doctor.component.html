@@ -1,16 +1,18 @@
 <div class="container">
-  <h2>Doctor Management</h2>
- <hr class="my-horizontal-line">
+  <h2 class="section-title">Doctor Management</h2>
+  <hr class="my-horizontal-line" />
 
   <!-- 🔍 Search + Filter -->
-  <div class="filters">
+  <div class="filters-section">
     <input
       type="text"
-      placeholder="Search by name"
+      placeholder="Search by name..."
       [(ngModel)]="searchTerm"
-      (ngModelChange)="onFilterChange()" />
+      (ngModelChange)="onFilterChange()"
+      class="filter-input"
+    />
 
-    <select [(ngModel)]="selectedSpecialty" (change)="onFilterChange()">
+    <select [(ngModel)]="selectedSpecialty" (change)="onFilterChange()" class="filter-select">
       <option value="">All Specialties</option>
       <option *ngFor="let doc of doctors" [value]="doc.Specialty">
         {{ doc.Specialty }}
@@ -18,62 +20,94 @@
     </select>
   </div>
 
+  <hr class="my-horizontal-line" />
+
   <!-- ➕ Add Doctor Form -->
-  <div class="form">
-  <input
-    type="text"
-    placeholder="Name"
-    [(ngModel)]="newDoctor.Name"
-    name="name"
-  />
-  <div *ngIf="showValidation && !newDoctor.Name.trim()" class="error">
-    Name is required.
+  <form (ngSubmit)="addDoctor()" class="doctor-form">
+    <h3 class="form-title">Add New Doctor</h3>
+    <div class="form-group">
+      <label for="doctorName">Name</label>
+      <input
+        type="text"
+        id="doctorName"
+        placeholder="Doctor Name"
+        [(ngModel)]="newDoctor.Name"
+        name="name"
+        required
+        class="form-input"
+      />
+      <div *ngIf="showValidation && !newDoctor.Name?.trim()" class="validation-error">
+        Name is required.
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="doctorSpecialty">Specialty</label>
+      <input
+        type="text"
+        id="doctorSpecialty"
+        placeholder="Specialty"
+        [(ngModel)]="newDoctor.Specialty"
+        name="specialty"
+        required
+        class="form-input"
+      />
+      <div *ngIf="showValidation && !newDoctor.Specialty?.trim()" class="validation-error">
+        Specialty is required.
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="submit" class="submit-button">Add Doctor</button>
+    </div>
+  </form>
+
+  <hr class="my-horizontal-line" />
+
+  <!-- ⬇️ CSV Export Buttons -->
+  <div class="export-buttons">
+    <button (click)="downloadCsv()" class="export-button csv-button">
+      <span class="icon">📄</span> Export to CSV
+    </button>
+    <button (click)="downloadExcel()" class="export-button excel-button">
+      <span class="icon">📊</span> Export to Excel
+    </button>
   </div>
 
-  <input
-    type="text"
-    placeholder="Specialty"
-    [(ngModel)]="newDoctor.Specialty"
-    name="specialty"
-  />
-  <div *ngIf="showValidation && !newDoctor.Specialty.trim()" class="error">
-    Specialty is required.
-  </div>
+  <hr class="my-horizontal-line" />
 
-  <button (click)="addDoctor()">Add Doctor</button>
-</div>
-
-  <!-- ⬇️ CSV Export Button -->
-<button (click)="downloadCsv()">📄 Export to CSV</button>
-  <button (click)="downloadExcel()">📊 Export to Excel</button>
- <hr class="my-horizontal-line">
   <!-- 📋 Doctor Table -->
-  <table>
-    <thead>
-      <tr>
-        <th (click)="toggleSort('name')">Name</th>
-        <th (click)="toggleSort('specialty')">Specialty</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let doc of doctors">
-        <td>{{ doc.Name }}</td>
-        <td>{{ doc.Specialty }}</td>
-        <td>
-          <button (click)="deleteDoctor(doc.Id)">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="doctor-table">
+      <thead>
+        <tr>
+          <th (click)="toggleSort('name')" class="sortable">Name <span class="sort-icon">▲▼</span></th>
+          <th (click)="toggleSort('specialty')" class="sortable">Specialty <span class="sort-icon">▲▼</span></th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let doc of doctors">
+          <td>{{ doc.Name }}</td>
+          <td>{{ doc.Specialty }}</td>
+          <td class="action-buttons">
+            <button (click)="deleteDoctor(doc.Id)" class="action-button delete-button">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
-
-
+  <!-- Pagination -->
   <div class="pagination-controls">
-  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
-  <span>Page {{ currentPage }} of {{ totalPages }}</span>
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+    <button (click)="prevPage()" [disabled]="currentPage === 1" class="pagination-button">
+      Previous
+    </button>
+    <span class="page-info">Page {{ currentPage }} of {{ totalPages }}</span>
+    <button (click)="nextPage()" [disabled]="currentPage === totalPages" class="pagination-button">
+      Next
+    </button>
+  </div>
 </div>
 
-
-</div>
+doctor.component.scss (Updated)
