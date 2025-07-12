@@ -1,0 +1,49 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.sou
+*.ncb
+*.opensdf
+*.sdf
+*.vc.db
+*.vshost.*
+*.opendb
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+*.exe
+*.dll
+*.pdb
+*.tmp
+*.log
+
+# Package Manager
+packages/
+*.nupkg
+project.lock.json
+
+# Rider
+.idea/
+
+# Test Results
+TestResults/
+*.trx
+*.coverage
+*.coveragexml
+
+# Resharper
+*.DotSettings
+*.DotSettings.user
+
+# Azure Functions
+local.settings.json
+
+# Node.js (if using client-side stuff)
+node_modules/
+
+# Any other specific temporary files
+**/*.bak

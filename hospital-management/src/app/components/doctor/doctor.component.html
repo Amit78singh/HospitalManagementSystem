@@ -1,0 +1,79 @@
+<div class="container">
+  <h2>Doctor Management</h2>
+ <hr class="my-horizontal-line">
+
+  <!-- 🔍 Search + Filter -->
+  <div class="filters">
+    <input
+      type="text"
+      placeholder="Search by name"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onFilterChange()" />
+
+    <select [(ngModel)]="selectedSpecialty" (change)="onFilterChange()">
+      <option value="">All Specialties</option>
+      <option *ngFor="let doc of doctors" [value]="doc.Specialty">
+        {{ doc.Specialty }}
+      </option>
+    </select>
+  </div>
+
+  <!-- ➕ Add Doctor Form -->
+  <div class="form">
+  <input
+    type="text"
+    placeholder="Name"
+    [(ngModel)]="newDoctor.Name"
+    name="name"
+  />
+  <div *ngIf="showValidation && !newDoctor.Name.trim()" class="error">
+    Name is required.
+  </div>
+
+  <input
+    type="text"
+    placeholder="Specialty"
+    [(ngModel)]="newDoctor.Specialty"
+    name="specialty"
+  />
+  <div *ngIf="showValidation && !newDoctor.Specialty.trim()" class="error">
+    Specialty is required.
+  </div>
+
+  <button (click)="addDoctor()">Add Doctor</button>
+</div>
+
+  <!-- ⬇️ CSV Export Button -->
+<button (click)="downloadCsv()">📄 Export to CSV</button>
+  <button (click)="downloadExcel()">📊 Export to Excel</button>
+ <hr class="my-horizontal-line">
+  <!-- 📋 Doctor Table -->
+  <table>
+    <thead>
+      <tr>
+        <th (click)="toggleSort('name')">Name</th>
+        <th (click)="toggleSort('specialty')">Specialty</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let doc of doctors">
+        <td>{{ doc.Name }}</td>
+        <td>{{ doc.Specialty }}</td>
+        <td>
+          <button (click)="deleteDoctor(doc.Id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+  <div class="pagination-controls">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+
+
+</div>

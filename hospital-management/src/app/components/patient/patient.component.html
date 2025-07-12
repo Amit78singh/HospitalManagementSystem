@@ -1,0 +1,63 @@
+<div class="container">
+  <h2>Patient Management</h2>
+   <hr class="my-horizontal-line">
+    <!-- ⬇️ CSV Export Button -->
+<button (click)="downloadCsv()">📄 Export to CSV</button>
+
+<button (click)="downloadExcel()">📊 Export to Excel</button>
+
+  <!-- 🔍 Search, Filter, and Sort Controls -->
+  <div class="filters">
+    <input type="text" placeholder="Search by name..." [(ngModel)]="searchTerm" (input)="onFilterChange()" />
+    <input type="text" placeholder="Filter by disease..." [(ngModel)]="selectedDisease" (input)="onFilterChange()" />
+    <input type="number" placeholder="Filter by Doctor ID..." [(ngModel)]="selectedDoctorId" (input)="onFilterChange()" />
+  </div>
+
+  <!-- 📝 Add/Edit Patient Form -->
+  <form (ngSubmit)="isEditing ? updatePatient() : addPatient()" class="form">
+    <input type="text" placeholder="Name" [(ngModel)]="newPatient.Name" name="name" required />
+    <input type="number" placeholder="Age" [(ngModel)]="newPatient.Age" name="age" required />
+    <input type="text" placeholder="Disease" [(ngModel)]="newPatient.Disease" name="disease" required />
+    <input type="number" placeholder="Doctor ID" [(ngModel)]="newPatient.DoctorId" name="doctorId" required />
+
+    <button type="submit">{{ isEditing ? 'Update' : 'Add' }} Patient</button>
+    <button type="button" *ngIf="isEditing" (click)="cancelEdit()">Cancel</button>
+  </form>
+ <hr class="my-horizontal-line">
+  <!-- 📋 Patient Table with Sorting -->
+  <table>
+    
+    <thead>
+      <tr>
+        <th (click)="toggleSort('name')">Name ▲▼</th>
+        <th (click)="toggleSort('age')">Age ▲▼</th>
+        <th (click)="toggleSort('disease')">Disease ▲▼</th>
+        <th>Doctor ID</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of patients">
+        <td>{{ p.Name }}</td>
+        <td>{{ p.Age }}</td>
+        <td>{{ p.Disease }}</td>
+        <td>{{ p.DoctorId }}</td>
+        <td>
+          <button (click)="editPatient(p)">Edit</button>
+          <button (click)="deletePatient(p.Id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+  <!-- ✅ Pagination Controls -->
+ <div class="pagination-controls">
+  <button (click)="goToPage(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+  <span>Page {{ currentPage }} of {{ totalPage }}</span>
+  <button (click)="goToPage(currentPage + 1)" [disabled]="currentPage === totalPage">Next</button>
+</div>
+
+</div>

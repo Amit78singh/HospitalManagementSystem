@@ -1,0 +1,83 @@
+.container {
+ max-width: 1100px;
+  margin: 30px auto;
+  h2 {
+    
+     text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px auto;
+  }
+
+  .form {
+    
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    input {
+      padding: 8px;
+      width: 200px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+
+    th, td {
+      border: 1px solid #a73939;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #af7a7a;
+    }
+
+    button {
+      background-color: #f44336;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+    }
+  }
+}
+.error {
+  color: red;
+  font-size: 0.9em;
+  margin-top: -8px;
+  margin-bottom: 8px;
+}
+
+.pagination-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+.my-horizontal-line {
+  border: none; /* Remove default browser border */
+  height: 1px; /* Thickness of the line */
+  background-color: #ccc; /* Color of the line */
+  width: 100%; /* Optional: Make it span the full width of its container */
+  margin-top: 20px; /* Space above the line */
+  margin-bottom: 20px; /* Space below the line */
+}

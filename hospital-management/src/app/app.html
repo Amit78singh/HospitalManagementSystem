@@ -1,0 +1,24 @@
+<header>
+  <h1>Hospital Management System</h1>
+  <nav *ngIf="auth.isLoggedIn(); else loginNav">
+    <a [routerLink]="['/patients']" routerLinkActive="active">Patients</a> |
+    <a *ngIf="auth.isAdmin()" [routerLink]="['/doctors']" routerLinkActive="active">Doctors</a> |
+    <a *ngIf="auth.isAdmin()" [routerLink]="['/dashboard']" routerLinkActive="active">Dashboard</a> |
+    <button class="logout-button" (click)="auth.logout()">Logout</button>
+  </nav>
+</header>
+
+<ng-template #loginNav>
+  <nav>
+    <a [routerLink]="['/register']" routerLinkActive="active">Register</a> |
+    <a [routerLink]="['/login']" routerLinkActive="active">Login</a>
+  </nav>
+</ng-template>
+
+<hr />
+
+<div *ngIf="auth.message" class="toast bottom-toast">
+  {{ auth.message }}
+</div>
+
+<router-outlet></router-outlet>

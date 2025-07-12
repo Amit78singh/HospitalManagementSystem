@@ -1,0 +1,82 @@
+.container {
+ max-width: 1100px;
+  margin: 3px auto;
+  h2 {
+    
+     text-align: center;
+    font-size: 22px;
+    margin-bottom: 30px auto;
+  }
+
+h2 {
+  text-align: center;
+  margin-bottom: 10px auto;
+}
+
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+
+  input {
+    flex: 1 1 20%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  button {
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  th, td {
+    border: 1px solid #ca0606;
+    padding: 8px 12px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #af7a7a;
+  }
+
+  button {
+    margin-right: 5px;
+    
+    cursor: pointer;
+  }
+}
+
+.error {
+  color: red;
+  font-size: 0.85rem;
+  margin-bottom: 8px;
+}
+.pagination-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+
+  button {
+    padding: 4px 10px;
+    cursor: pointer;
+  }
+
+  span {
+    font-weight: bold;
+  }
+}
+}

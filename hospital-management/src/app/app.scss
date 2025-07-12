@@ -1,0 +1,47 @@
+h1 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+nav {
+  text-align: center;
+  margin-bottom: 20px;
+
+  a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: #007bff;
+  }
+}
+a.active {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.logout-button {
+ 
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    background-color: #c0392b;
+  }
+}
+
+.toast {
+  background-color: #4caf50; // Green success
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  margin: 10px 0;
+  animation: fadeout 3s ease-out forwards;
+}
+
+@keyframes fadeout {
+  0% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
