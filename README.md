@@ -78,10 +78,6 @@ A full-stack **Hospital Management System** built with:
 [![API Documentation 1](https://github.com/user-attachments/assets/c2c7cd5c-f9b5-44bd-8684-2f1db362affd)](https://github.com/user-attachments/assets/c2c7cd5c-f9b5-44bd-8684-2f1db362affd)
 [![API Documentation 2](https://github.com/user-attachments/assets/abd0ec1a-2a5f-416b-bac0-7d269bfac874)](https://github.com/user-attachments/assets/abd0ec1a-2a5f-416b-bac0-7d269bfac874)
 
-📁 Project Structure
-HospitalManagementSystem/
-├── HospitalManagementAPI/           # ASP.NET Core backend
-└── hospital-management/             # Angular frontend
 
 
 🛡️ Security
@@ -91,6 +87,7 @@ Role-Based Access (Admin/User)
 
 Secure endpoints with [Authorize]
 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   🙋‍♂️ Author
 Amit Kushwanshi
 👤 GitHub: @Amit78singh
@@ -98,7 +95,7 @@ Amit Kushwanshi
 
 ⭐️ Show your support
 If you like this project, please ⭐️ the repo!
-
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ---
 
 ### 🧪 Backend Setup (ASP.NET Core)
