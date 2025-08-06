@@ -1,4 +1,4 @@
-<div class="register-wrapper">
+<div class="register-wrapper full-height-page">
   <div class="register-container">
     <h2 class="register-title">Create Account</h2>
     <form [formGroup]="form" (ngSubmit)="register()" class="register-form">
@@ -39,9 +39,13 @@
       </div>
 
       <button type="submit" [disabled]="form.invalid" class="register-button">
-        Register
+        Create Account
       </button>
     </form>
-  
+    
+    <div class="login-link-text">
+      Already have an account? 
+      <a routerLink="/login" class="login-link">Sign In</a>
+    </div>
   </div>
 </div>

@@ -1,63 +1,722 @@
-/* You can add global styles to this file, and also import other style files */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background-color: #ffffff;
-  padding: 10px 20px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
+/* Global Styles - Professional Hospital Management System */
+
+/* CSS Variables for consistent theming */
+:root {
+  --primary-navy: #1e3c72;
+  --secondary-navy: #2a5298;
+  --accent-blue: #3b82f6;
+  --success-green: #059669;
+  --warning-amber: #f59e0b;
+  --danger-red: #dc2626;
+  --text-dark: #1e3c72;
+  --text-light: #64748b;
+  --bg-light: #f8fafc;
+  --bg-white: #ffffff;
+  --border-light: rgba(30, 60, 114, 0.1);
+  --shadow-light: rgba(30, 60, 114, 0.08);
+  --shadow-medium: rgba(30, 60, 114, 0.15);
 }
-body, .main-content {
-  padding-top: 100px; /* Adjust based on your header height */
+
+/* Reset and Base Styles */
+* {
+  box-sizing: border-box;
 }
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
+  color: var(--text-dark);
+  line-height: 1.5;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1 {
-  margin-top: 20px;
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-dark);
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
 }
 
-nav a {
-  text-decoration: none;
-  margin-right: 10px;
-  color: #007bff;
+h1 { font-size: 2rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.25rem; }
+h4 { font-size: 1.125rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; }
+
+p {
+  margin: 0 0 0.5rem 0;
+  color: var(--text-light);
 }
 
-hr {
-  margin: 10px 0 20px;
-
-
-}
-footer {
-  text-align: center;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #666;
-}
-
+/* Header Styles */
 header {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 70px; /* Adjust based on actual height */
-  background-color: white;
+  height: 70px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(30, 60, 114, 0.1);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   z-index: 1000;
-  border-bottom: 1px solid #ccc;
-  padding: 10px 0;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Push the main content down below the fixed header */
-main, .main-content, router-outlet, app-root {
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--primary-navy);
+  
+  .logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(30, 60, 114, 0.2);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+      border-radius: 12px;
+    }
+    
+    .cross {
+      width: 22px;
+      height: 22px;
+      position: relative;
+      z-index: 2;
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        background: white;
+        border-radius: 1px;
+      }
+      
+      &::before {
+        width: 2px;
+        height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      
+      &::after {
+        width: 100%;
+        height: 2px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+    
+    .heart {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 12px;
+      height: 12px;
+      z-index: 2;
+      
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 10px;
+        background: #ff6b6b;
+        border-radius: 6px 6px 0 0;
+      }
+      
+      &::before {
+        left: 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+      }
+      
+      &::after {
+        right: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+      }
+    }
+  }
+  
+  .logo-text {
+    h1 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      margin: 0;
+      letter-spacing: -0.5px;
+      color: var(--primary-navy);
+    }
+    
+    .tagline {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+  }
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(30, 60, 114, 0.1), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover {
+    background: rgba(30, 60, 114, 0.08);
+    color: var(--primary-navy);
+    transform: translateY(-1px);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &.active {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(30, 60, 114, 0.3);
+  }
+}
+
+/* Main Content Area */
+main, .main-content, app-root {
   display: block;
-  margin-top: 80px; /* Must be greater than header height */
-  padding: 0 20px;
+  margin-top: 80px;
+  padding: 1rem;
+  min-height: calc(100vh - 80px);
+}
+
+/* Router outlet with conditional margin */
+router-outlet {
+  display: block;
+  margin-top: 80px;
+  padding: 1rem;
+  min-height: calc(100vh - 80px);
+}
+
+/* Remove margin when login or register is active */
+router-outlet:has(app-login),
+router-outlet:has(app-register) {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+/* Remove margin for login and register pages */
+app-login, app-register {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+/* Remove margin for dashboard, patient, and doctor pages that should be full height */
+app-dashboard, app-patient, app-doctor {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+/* Additional specific targeting for login and register wrappers */
+.login-wrapper, .register-wrapper {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+}
+
+/* Override router-outlet for login/register routes */
+router-outlet:has(+ app-login),
+router-outlet:has(+ app-register) {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+/* Target full-height pages specifically */
+.full-height-page {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+}
+
+/* Override router-outlet when full-height pages are active */
+router-outlet + .full-height-page,
+router-outlet + app-login,
+router-outlet + app-register {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+/* Force remove margin from router-outlet when these components are present */
+app-login ~ router-outlet,
+app-register ~ router-outlet,
+.full-height-page ~ router-outlet {
+  margin-top: 0 !important;
+  padding: 0 !important;
+}
+
+/* Alternative approach - target by route */
+router-outlet {
+  margin-top: 80px;
+  padding: 1rem;
+  min-height: calc(100vh - 80px);
+}
+
+/* Override for specific routes */
+body:has([routerlink="/login"]) router-outlet,
+body:has([routerlink="/register"]) router-outlet {
+  margin-top: 0 !important;
+  padding: 0 !important;
+  min-height: 100vh !important;
+}
+
+/* Direct override for login and register pages */
+app-login,
+app-register {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  height: 100vh !important;
+  width: 100vw !important;
+}
+
+/* Container Styles */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+/* Button Styles */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+  
+  &:hover:not(:disabled) {
+    transform: translateY(-2px);
+    
+    &::before {
+      left: 100%;
+    }
+  }
+  
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  &.btn-primary {
+    background: linear-gradient(135deg, var(--primary-navy) 0%, var(--secondary-navy) 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(30, 60, 114, 0.3);
+    
+    &:hover:not(:disabled) {
+      box-shadow: 0 4px 15px rgba(30, 60, 114, 0.4);
+    }
+  }
+  
+  &.btn-success {
+    background: linear-gradient(135deg, var(--success-green) 0%, #10b981 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(5, 150, 105, 0.3);
+    
+    &:hover:not(:disabled) {
+      box-shadow: 0 4px 15px rgba(5, 150, 105, 0.4);
+    }
+  }
+  
+  &.btn-warning {
+    background: linear-gradient(135deg, var(--warning-amber) 0%, #fbbf24 100%);
+    color: var(--text-dark);
+    box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+    
+    &:hover:not(:disabled) {
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
+    }
+  }
+  
+  &.btn-danger {
+    background: linear-gradient(135deg, var(--danger-red) 0%, #ef4444 100%);
+    color: white;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+    
+    &:hover:not(:disabled) {
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    }
+  }
+}
+
+/* Card Styles */
+.card {
+  background: linear-gradient(135deg, var(--bg-white) 0%, var(--bg-light) 100%);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px var(--shadow-light);
+  border: 1px solid var(--border-light);
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+  }
+}
+
+/* Form Styles */
+.form-group {
+  margin-bottom: 1rem;
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+.form-input, .form-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-dark);
+  
+  &::placeholder {
+    color: #94a3b8;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--primary-navy);
+    box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+  }
+  
+  &:hover {
+    border-color: var(--secondary-navy);
+  }
+}
+
+.form-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%231e3c72%22%20d%3D%22M287%2C197.3L159.2%2C69.5c-3.6-3.6-9.4-3.6-13.1%2C0L5.4%2C197.3c-3.6%2C3.6-3.6%2C9.4%2C0%2C13.1c3.6%2C3.6%2C9.4%2C3.6%2C13.1%2C0l135-135l135%2C135c3.7%2C3.6%2C9.5%2C3.6%2C13.1%2C0C290.7%2C206.7%2C290.7%2C200.9%2C287%2C197.3z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 0.7em top 50%;
+  background-size: 0.65em auto;
+  padding-right: 2.5em;
+}
+
+/* Utility Classes */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mb-0 { margin-bottom: 0; }
+.mb-1 { margin-bottom: 0.25rem; }
+.mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 1rem; }
+.mb-4 { margin-bottom: 1.5rem; }
+
+.mt-0 { margin-top: 0; }
+.mt-1 { margin-top: 0.25rem; }
+.mt-2 { margin-top: 0.5rem; }
+.mt-3 { margin-top: 1rem; }
+.mt-4 { margin-top: 1.5rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 0.25rem; }
+.p-2 { padding: 0.5rem; }
+.p-3 { padding: 1rem; }
+.p-4 { padding: 1.5rem; }
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+}
+
+@media (max-width: 992px) {
+  .container {
+    max-width: 800px;
+  }
+  
+  header {
+    padding: 0 1rem;
+  }
+  
+  nav {
+    gap: 0.5rem;
+  }
+  
+  nav a {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+  
+  .logo .logo-text h1 {
+    font-size: 1.125rem;
+  }
+  
+  .logo .logo-text .tagline {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  
+  main, .main-content, router-outlet, app-root {
+    padding: 0.5rem;
+  }
+  
+  header {
+    height: 50px;
+    padding: 0 0.5rem;
+  }
+  
+  .header-content {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  
+  nav {
+    gap: 0.25rem;
+  }
+  
+  nav a {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+  }
+  
+  .logo {
+    gap: 0.5rem;
+    
+    .logo-icon {
+      width: 35px;
+      height: 35px;
+      
+      .cross {
+        width: 18px;
+        height: 18px;
+      }
+      
+      .heart {
+        width: 8px;
+        height: 8px;
+        
+        &::before,
+        &::after {
+          width: 4px;
+          height: 6px;
+        }
+      }
+    }
+    
+    .logo-text h1 {
+      font-size: 1rem;
+    }
+    
+    .logo-text .tagline {
+      font-size: 0.6rem;
+    }
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+  
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .container {
+    padding: 0 0.25rem;
+  }
+  
+  main, .main-content, router-outlet, app-root {
+    padding: 0.25rem;
+  }
+  
+  .card {
+    padding: 0.75rem;
+  }
+  
+  .form-input, .form-select {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .logo {
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+      
+      .cross {
+        width: 15px;
+        height: 15px;
+      }
+      
+      .heart {
+        width: 7px;
+        height: 7px;
+        
+        &::before,
+        &::after {
+          width: 3px;
+          height: 5px;
+        }
+      }
+    }
+    
+    .logo-text h1 {
+      font-size: 0.9rem;
+    }
+    
+    .logo-text .tagline {
+      font-size: 0.55rem;
+    }
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-in-up {
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+.shake {
+  animation: shake 0.5s ease-in-out;
 }

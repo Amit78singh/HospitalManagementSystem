@@ -1,6 +1,16 @@
 <header class="app-header">
   <div class="header-content">
-    <h1 class="app-title">Hospital Management System</h1>
+    <a href="/" class="logo">
+      <div class="logo-icon">
+        <div class="cross"></div>
+        <div class="heart"></div>
+      </div>
+      <div class="logo-text">
+        <h1>Hospital Management</h1>
+        <p class="tagline">Professional Healthcare</p>
+      </div>
+    </a>
+    
     <nav class="main-nav" *ngIf="auth.isLoggedIn(); else loginNav">
       <ul class="nav-list">
         <li class="nav-item">

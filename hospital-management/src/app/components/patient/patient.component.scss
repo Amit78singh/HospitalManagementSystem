@@ -1,65 +1,107 @@
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 2rem auto;
-  padding: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  padding: 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(30, 60, 114, 0.08), 0 0 0 1px rgba(30, 60, 114, 0.05);
+  border: 1px solid rgba(30, 60, 114, 0.1);
 }
 
 .section-title {
   text-align: center;
-  font-size: 2.2rem;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
-  font-weight: 700;
+  font-size: 2.5rem;
+  color: #1e3c72;
+  margin-bottom: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    border-radius: 2px;
+  }
 }
 
 .my-horizontal-line {
   border: none;
-  height: 1px;
-  background-color: #e0e0e0;
-  margin: 2rem 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #1e3c72, transparent);
+  margin: 2.5rem 0;
+  border-radius: 1px;
 }
 
 .export-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
   justify-content: center;
 
   .export-button {
-    padding: 0.8rem 1.5rem;
-    border-radius: 8px;
+    padding: 1rem 2rem;
+    border-radius: 12px;
     border: none;
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    letter-spacing: 0.5px;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
 
     .icon {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
 
     &.csv-button {
-      background-color: #28a745; // Green
+      background: linear-gradient(135deg, #059669 0%, #10b981 100%);
       color: white;
+      box-shadow: 0 4px 15px rgba(5, 150, 105, 0.3);
+      
       &:hover {
-        background-color: #218838;
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(5, 150, 105, 0.4);
+        
+        &::before {
+          left: 100%;
+        }
       }
     }
 
     &.excel-button {
-      background-color: #007bff; // Blue
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
       color: white;
+      box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+      
       &:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+        
+        &::before {
+          left: 100%;
+        }
       }
     }
   }
@@ -68,192 +110,270 @@
 .filters-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-bottom: 2rem;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
   justify-content: center;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  border: 1px solid rgba(30, 60, 114, 0.1);
 
   .filter-input {
-    flex: 1 1 250px; // Allows inputs to grow but maintain minimum width
-    padding: 0.75rem 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
+    flex: 1 1 280px;
+    padding: 1rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
     font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.9);
+    color: #1e3c72;
+    
+    &::placeholder {
+      color: #94a3b8;
+    }
 
     &:focus {
       outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      border-color: #1e3c72;
+      box-shadow: 0 0 0 4px rgba(30, 60, 114, 0.1);
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-1px);
+    }
+    
+    &:hover {
+      border-color: #2a5298;
     }
   }
 }
 
 .patient-form {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); // Responsive grid
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  border: 1px solid #e0e0e0;
-  border-radius: 12px;
-  background-color: #f9fbfd;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+  padding: 2rem;
+  border: 2px solid rgba(30, 60, 114, 0.1);
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
 
   .form-title {
-    grid-column: 1 / -1; // Span across all columns
+    grid-column: 1 / -1;
     text-align: center;
-    font-size: 1.8rem;
-    color: #34495e;
-    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #1e3c72;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
   }
 
   .form-group {
     label {
       display: block;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
       font-weight: 600;
-      color: #495057;
+      color: #1e3c72;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
     }
   }
 
   .form-input {
     width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #ced4da;
-    border-radius: 8px;
+    padding: 1rem 1.2rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
     font-size: 1rem;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 255, 255, 0.9);
+    color: #1e3c72;
+    
+    &::placeholder {
+      color: #94a3b8;
+    }
 
     &:focus {
       outline: none;
-      border-color: #007bff;
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      border-color: #1e3c72;
+      box-shadow: 0 0 0 4px rgba(30, 60, 114, 0.1);
+      background: rgba(255, 255, 255, 1);
+      transform: translateY(-1px);
+    }
+    
+    &:hover {
+      border-color: #2a5298;
     }
   }
 
   .form-actions {
-    grid-column: 1 / -1; // Span across all columns
+    grid-column: 1 / -1;
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    margin-top: 1rem;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
 
     .submit-button, .cancel-button {
-      padding: 0.8rem 1.8rem;
+      padding: 1rem 2rem;
       border: none;
-      border-radius: 8px;
-      font-size: 1.05rem;
-      font-weight: 600;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+      }
     }
 
     .submit-button {
-      background-color: #007bff;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
       color: white;
+      box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+      
       &:hover {
-        background-color: #0056b3;
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+        
+        &::before {
+          left: 100%;
+        }
       }
     }
 
     .cancel-button {
-      background-color: #6c757d; // Gray
+      background: linear-gradient(135deg, #64748b 0%, #94a3b8 100%);
       color: white;
+      box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+      
       &:hover {
-        background-color: #5a6268;
-        transform: translateY(-2px);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(100, 116, 139, 0.4);
+        
+        &::before {
+          left: 100%;
+        }
       }
     }
   }
 }
 
 .table-responsive {
-  overflow-x: auto; // Enables horizontal scrolling on small screens
-  margin-bottom: 2rem;
+  overflow-x: auto;
+  margin-bottom: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(30, 60, 114, 0.1);
 }
 
 .patient-table {
   width: 100%;
-  border-collapse: separate; // Use separate for rounded corners on cells
+  border-collapse: separate;
   border-spacing: 0;
-  min-width: 700px; // Minimum width to prevent squishing on small screens
-  background-color: #ffffff;
-  border-radius: 12px;
-  overflow: hidden; // Ensures rounded corners apply to content
+  min-width: 800px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(30, 60, 114, 0.1);
 
   th, td {
-    padding: 1rem 1.2rem;
+    padding: 1.2rem 1.5rem;
     text-align: left;
-    border-bottom: 1px solid #e9ecef; // Light border for rows
+    border-bottom: 1px solid rgba(30, 60, 114, 0.1);
   }
 
   thead {
-    background-color: #f8f9fa; // Light header background
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     th {
-      color: #495057;
-      font-weight: 600;
+      color: white;
+      font-weight: 700;
       text-transform: uppercase;
       font-size: 0.9rem;
       cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: background-color 0.3s ease;
+      
       &:hover {
-        background-color: #e2e6ea;
+        background: rgba(255, 255, 255, 0.1);
       }
     }
   }
 
   tbody {
     tr {
-      transition: background-color 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      
       &:hover {
-        background-color: #f0f8ff; // Light blue on hover
+        background: rgba(30, 60, 114, 0.05);
+        transform: scale(1.01);
       }
+      
       &:last-child td {
-        border-bottom: none; // No border for the last row
+        border-bottom: none;
       }
     }
+    
     td {
-      color: #343a40;
+      color: #1e3c72;
+      font-weight: 500;
     }
   }
 
   .sortable {
     position: relative;
-    padding-right: 2rem; // Space for sort icon
+    padding-right: 2.5rem;
 
     .sort-icon {
       position: absolute;
       right: 1rem;
-      color: #adb5bd; // Gray icon
+      color: rgba(255, 255, 255, 0.8);
       font-size: 0.8rem;
     }
   }
 
   .action-buttons {
-    white-space: nowrap; // Prevent buttons from wrapping
+    white-space: nowrap;
+    
     .action-button {
-      padding: 0.5rem 1rem;
+      padding: 0.6rem 1.2rem;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-size: 0.9rem;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s ease;
-      margin-right: 0.5rem; // Space between buttons
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      margin-right: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
 
       &.edit-button {
-        background-color: #ffc107; // Yellow for edit
-        color: #343a40;
+        background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+        color: #1e3c72;
+        box-shadow: 0 2px 8px rgba(245, 158, 11, 0.3);
+        
         &:hover {
-          background-color: #e0a800;
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
         }
       }
 
       &.delete-button {
-        background-color: #dc3545; // Red for delete
+        background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
         color: white;
+        box-shadow: 0 2px 8px rgba(220, 38, 38, 0.3);
+        
         &:hover {
-          background-color: #c82333;
-          transform: translateY(-1px);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
         }
       }
     }
@@ -264,51 +384,75 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 16px;
+  border: 1px solid rgba(30, 60, 114, 0.1);
 
   .pagination-button {
-    padding: 0.7rem 1.2rem;
-    border: 1px solid #007bff;
-    border-radius: 8px;
-    background-color: #007bff;
+    padding: 0.8rem 1.5rem;
+    border: 2px solid #1e3c72;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
     color: white;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: background-color 0.3s ease, border-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    letter-spacing: 0.5px;
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
 
     &:hover:not(:disabled) {
-      background-color: #0056b3;
-      border-color: #004085;
       transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(30, 60, 114, 0.3);
+      
+      &::before {
+        left: 100%;
+      }
     }
 
     &:disabled {
-      background-color: #e9ecef;
-      border-color: #ced4da;
-      color: #6c757d;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      border-color: #cbd5e1;
+      color: #94a3b8;
       cursor: not-allowed;
       opacity: 0.7;
+      transform: none;
+      box-shadow: none;
     }
   }
 
   .page-info {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #343a40;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e3c72;
+    letter-spacing: 0.5px;
   }
 }
 
 /* Responsive adjustments for smaller screens */
 @media (max-width: 768px) {
   .container {
-    padding: 1rem;
+    padding: 1.5rem;
     margin: 1rem auto;
   }
 
   .section-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
   }
 
   .export-buttons, .filters-section, .patient-form .form-actions {
@@ -321,10 +465,16 @@
   }
 
   .patient-form {
-    grid-template-columns: 1fr; // Single column layout
+    grid-template-columns: 1fr;
+    padding: 1.5rem;
   }
 
   .patient-table {
-    min-width: unset; // Allow table to shrink on small screens
+    min-width: unset;
+  }
+  
+  .pagination-controls {
+    flex-direction: column;
+    gap: 1rem;
   }
 }

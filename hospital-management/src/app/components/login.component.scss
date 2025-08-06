@@ -1,127 +1,355 @@
 .login-wrapper {
+  height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 100px); // Adjust for header height
-  padding: 1.5rem;
-  background-color: #e9ecef; // Light background for the page
+  justify-content: center;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="rgba(255,255,255,0.03)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    pointer-events: none;
+  }
 }
 
 .login-container {
-  background-color: #ffffff;
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 1.75rem;
   border-radius: 16px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  max-width: 450px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  text-align: center;
-  animation: fadeIn 0.8s ease-out forwards;
+  max-width: 360px;
+  position: relative;
+  z-index: 1;
+  animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.logo-section {
+  text-align: center;
+  margin-bottom: 1.25rem;
+  
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 65px;
+    height: 65px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    border-radius: 16px;
+    margin-bottom: 0.6rem;
+    position: relative;
+    box-shadow: 0 8px 25px rgba(30, 60, 114, 0.3);
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+      border-radius: 16px;
+    }
+    
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      position: relative;
+      z-index: 2;
+      
+      .cross {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          background: white;
+          border-radius: 2px;
+        }
+        
+        &::before {
+          width: 3px;
+          height: 100%;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+        
+        &::after {
+          width: 100%;
+          height: 3px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+      }
+      
+      .heart {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 16px;
+        height: 16px;
+        
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          width: 8px;
+          height: 12px;
+          background: #ff6b6b;
+          border-radius: 8px 8px 0 0;
+        }
+        
+        &::before {
+          left: 0;
+          transform: rotate(-45deg);
+          transform-origin: 0 100%;
+        }
+        
+        &::after {
+          right: 0;
+          transform: rotate(45deg);
+          transform-origin: 100% 100%;
+        }
+      }
+    }
+  }
+  
+  .logo-text {
+    h1 {
+      font-size: 1.35rem;
+      color: #1e3c72;
+      font-weight: 800;
+      margin: 0 0 0.2rem 0;
+      letter-spacing: -0.5px;
+    }
+    
+    .tagline {
+      font-size: 0.75rem;
+      color: #64748b;
+      font-weight: 500;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+  }
 }
 
 .login-title {
-  font-size: 2rem;
-  color: #2c3e50;
-  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.125rem;
+  color: #1e3c72;
+  margin-bottom: 1rem;
   font-weight: 700;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1.2rem;
+  letter-spacing: -0.5px;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 35px;
+    height: 2px;
+    background: linear-gradient(90deg, #1e3c72, #2a5298);
+    border-radius: 1px;
+  }
 }
 
 .form-group {
-  text-align: left;
+  margin-bottom: 1rem;
+  
   label {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.3rem;
     font-weight: 600;
-    color: #495057;
+    color: #1e3c72;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
   }
 }
 
 .form-input {
   width: 100%;
-  padding: 0.85rem 1rem;
-  border: 1px solid #ced4da;
+  padding: 0.6rem 0.8rem;
+  border: 2px solid #e2e8f0;
   border-radius: 8px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 0.8rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e3c72;
+  
+  &::placeholder {
+    color: #94a3b8;
+  }
 
   &:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    border-color: #1e3c72;
+    box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
+    background: rgba(255, 255, 255, 1);
+    transform: translateY(-1px);
+  }
+  
+  &:hover {
+    border-color: #2a5298;
   }
 }
 
 .login-button {
-  background-color: #007bff;
+  width: 100%;
+  padding: 0.6rem 1.2rem;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
   color: white;
-  padding: 0.9rem 1.5rem;
-  font-size: 1.1rem;
   border: none;
   border-radius: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  font-weight: 600;
-  margin-top: 1rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px rgba(30, 60, 114, 0.3);
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
 
   &:hover:not(:disabled) {
-    background-color: #0056b3;
     transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(30, 60, 114, 0.4);
+    
+    &::before {
+      left: 100%;
+    }
   }
 
   &:disabled {
-    background-color: #a3c3f0;
+    opacity: 0.6;
     cursor: not-allowed;
-    opacity: 0.7;
+    transform: none;
   }
 }
 
 .error-message {
-  color: #dc3545; // Bootstrap red for errors
-  font-size: 0.9rem;
-  margin-top: 0.8rem;
-  text-align: center;
-  font-weight: 500;
+  background: rgba(220, 38, 38, 0.1);
+  color: #dc2626;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  margin-bottom: 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-left: 3px solid #dc2626;
+  animation: shake 0.5s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
 }
 
 .register-link-text {
-  margin-top: 1.5rem;
-  font-size: 0.95rem;
-  color: #6c757d;
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.75rem;
+  color: #64748b;
 
   .register-link {
-    color: #007bff;
+    color: #1e3c72;
     text-decoration: none;
-    font-weight: 600;
+    font-weight: 700;
+    transition: color 0.3s ease;
 
     &:hover {
+      color: #2a5298;
       text-decoration: underline;
     }
   }
 }
 
-/* Responsive adjustments */
-@media (max-width: 576px) {
+/* Responsive Design */
+@media (max-width: 768px) {
+  .login-wrapper {
+    padding: 0.5rem;
+  }
+  
   .login-container {
     padding: 1.5rem;
-    margin: 1rem;
+    margin: 0;
+    max-width: 100%;
   }
-
+  
+  .logo-section .logo {
+    width: 60px;
+    height: 60px;
+    
+    .logo-icon {
+      width: 30px;
+      height: 30px;
+    }
+  }
+  
+  .logo-section .logo-text h1 {
+    font-size: 1.25rem;
+  }
+  
   .login-title {
-    font-size: 1.7rem;
-  }
-
-  .login-button {
-    padding: 0.8rem 1.2rem;
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1.25rem;
+  }
+  
+  .logo-section .logo {
+    width: 55px;
+    height: 55px;
+    
+    .logo-icon {
+      width: 28px;
+      height: 28px;
+    }
+  }
+  
+  .logo-section .logo-text h1 {
+    font-size: 1.125rem;
+  }
+  
+  .login-title {
+    font-size: 0.95rem;
   }
 }

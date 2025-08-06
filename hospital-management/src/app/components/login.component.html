@@ -1,5 +1,19 @@
-<div class="login-wrapper">
+<div class="login-wrapper full-height-page">
   <div class="login-container">
+    <!-- Professional Logo Section -->
+    <div class="logo-section">
+      <div class="logo">
+        <div class="logo-icon">
+          <div class="cross"></div>
+          <div class="heart"></div>
+        </div>
+      </div>
+      <div class="logo-text">
+        <h1>Hospital Management</h1>
+        <p class="tagline">Professional Healthcare Solutions</p>
+      </div>
+    </div>
+
     <h2 class="login-title">Welcome Back!</h2>
     <form (ngSubmit)="login()" #form="ngForm" class="login-form">
       <div class="form-group">
@@ -33,6 +47,9 @@
         {{ errorMessage }}
       </div>
     </form>
-   
+    
+    <div class="register-link-text">
+      <p>Don't have an account? <a routerLink="/register" class="register-link">Register here</a></p>
+    </div>
   </div>
 </div>

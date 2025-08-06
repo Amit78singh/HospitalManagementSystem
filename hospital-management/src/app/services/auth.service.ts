@@ -26,29 +26,39 @@ export class AuthService {
   }
 
   register(email: string, password: string, role: string): Observable<any> {
-  return this.http.post(`${this.apiUrl}/register`, {
-    Email: email,
-    PasswordHash: password,
-    Role: role
-  });
-}
+    const registerData = {
+      Email: email,
+      PasswordHash: password,
+      Role: role
+    };
+    
+    console.log('Sending register request:', registerData);
+    
+    return this.http.post(`${this.apiUrl}/register`, registerData);
+  }
 
 
   login(email: string, password: string): Observable<any> {
-  return this.http.post<{ token: string }>('https://localhost:7064/api/Auth/login', {
-    Email: email,
-    PasswordHash: password
-  }).pipe(
-    tap(res => { localStorage.setItem('token', res.token);
-    this.setMessage(' Login Successful!');
-  }), 
-  catchError(error=>{
-    this.setMessage('Login failed . Please Check Your Email and Password');
-    return throwError(()=>error);
-
-  })
-  );
-}
+    const loginData = {
+      Email: email,
+      PasswordHash: password
+    };
+    
+    console.log('Sending login request:', loginData);
+    
+    return this.http.post<{ token: string }>('https://localhost:7064/api/Auth/login', loginData).pipe(
+      tap(res => { 
+        console.log('Login successful:', res);
+        localStorage.setItem('token', res.token);
+        this.setMessage(' Login Successful!');
+      }), 
+      catchError(error => {
+        console.error('Login error:', error);
+        this.setMessage('Login failed . Please Check Your Email and Password');
+        return throwError(() => error);
+      })
+    );
+  }
 
 
   logout(): void {
